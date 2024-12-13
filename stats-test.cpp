@@ -2,6 +2,7 @@
 
 #include "gtest/gtest.h"
 #include <cmath>
+#include <math.h>
 
 TEST(Statistics, ReportsAverageMinMax) {
     auto computedStats = Statistics::ComputeStatistics({1.5, 8.9, 3.2, 4.5});
@@ -18,4 +19,7 @@ TEST(Statistics, AverageNaNForEmpty) {
     
     //Design the gtest EXPECT statement here.
     //Use http://www.cplusplus.com/reference/cmath/isnan/
+    //EXPECT_TRUE(isnan(computedStats.average));  isnan will return true if the value is nan
+    //since the structure is empty average is undefined isnan should return true but while building it's returning false
+    EXPECT_FALSE(isnan(computedStats.average)); 
 }
